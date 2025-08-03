@@ -6,10 +6,22 @@ export const ExperienceSection = () => {
       title: 'Data Science Intern',
       company: 'Transvolt Mobility',
       type: 'On-site',
-      location: 'Gurgaon',
-      duration: 'June 2025 - Present • 2 mos',
-      description: 'At Transvolt, I worked on the project...',
-      skills: ['Django', 'PostgreSQL'],
+      location: 'Gurugram, Haryana',
+      duration: 'June 2025 - July 2025 • 2 mos',
+      logo: '/public/transvolt.png',
+      description: [
+        'Developed interactive dashboards using Django to visualize and interpret vehicle-sensor data, enabling early detection of battery health degradation patterns.',
+        'Launched the Bugzilla-based Issue Tracker with a clean, user-friendly UI, role-based access controls, and SMTP email integration—improving reporting efficiency and reducing triage time.',
+      ],
+      skills: [
+        'Django',
+        'PostgreSQL',
+        'Python',
+        'Tailwind CSS',
+        'Docker',
+        'AWS',
+        'Nginx',
+      ],
     },
   ];
 
@@ -167,11 +179,17 @@ export const ExperienceSection = () => {
                 className="relative flex flex-col md:flex-row"
                 variants={experienceItemVariants}
               >
-                {/* Animated Timeline dot - responsive positioning */}
+                {/* Company Logo instead of dot */}
                 <motion.div
-                  className="absolute left-3 md:left-3 w-6 h-6 bg-background rounded-full border-4 border-gray-800 dark:border-gray-200 shadow-lg mt-1 transition-colors duration-300 z-10"
+                  className="absolute left-2 md:left-2 w-8 h-8 bg-background rounded-full border-2 border-gray-800 dark:border-gray-200 shadow-lg mt-0 transition-colors duration-300 z-10 flex items-center justify-center overflow-hidden"
                   variants={dotVariants}
-                />
+                >
+                  <img
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    className="w-6 h-6 object-contain"
+                  />
+                </motion.div>
 
                 {/* Content with enhanced animations - responsive layout */}
                 <div className="ml-12 md:ml-12 flex-1 flex flex-col md:flex-row">
@@ -196,27 +214,27 @@ export const ExperienceSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
                   >
-                    <motion.div
-                      className="mb-2 text-left"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.2 + 0.5 }}
-                    >
-                      <span className="text-sm text-muted-foreground">
-                        {exp.duration}
-                      </span>
-                    </motion.div>
-
                     <motion.h4
                       className="text-lg font-semibold text-primary mb-1 text-left"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.2 + 0.6 }}
+                      transition={{ duration: 0.4, delay: index * 0.2 + 0.5 }}
                     >
                       {exp.company}
                     </motion.h4>
+
+                    <motion.div
+                      className="mb-2 text-left"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.2 + 0.6 }}
+                    >
+                      <span className="text-sm text-muted-foreground">
+                        {exp.duration}
+                      </span>
+                    </motion.div>
 
                     <motion.div
                       className="text-sm text-muted-foreground mb-4 text-left"
@@ -228,18 +246,22 @@ export const ExperienceSection = () => {
                       {exp.type} • {exp.location}
                     </motion.div>
 
-                    <motion.p
-                      className="text-muted-foreground text-sm mb-4 leading-relaxed text-left max-w-lg"
+                    <motion.div
+                      className="text-muted-foreground text-sm mb-3 leading-relaxed text-left max-w-2xl"
                       initial={{ opacity: 0, y: 15 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.2 + 0.8 }}
                     >
-                      {exp.description}
-                    </motion.p>
+                      {exp.description.map((bullet, bulletIndex) => (
+                        <p key={bulletIndex} className="mb-2">
+                          • {bullet}
+                        </p>
+                      ))}
+                    </motion.div>
 
                     <motion.div
-                      className="flex flex-wrap gap-2"
+                      className="flex flex-wrap gap-1.5"
                       variants={skillContainerVariants}
                       initial="hidden"
                       whileInView="visible"
@@ -248,7 +270,7 @@ export const ExperienceSection = () => {
                       {exp.skills.map((skill, skillIndex) => (
                         <motion.span
                           key={skillIndex}
-                          className="px-3 py-1 bg-muted text-foreground rounded-md text-sm"
+                          className="bg-background border rounded-md font-medium text-xs py-1 px-2.5 sm:py-1.5 sm:px-3 hover:bg-accent transition-all duration-300 flex items-center gap-1 sm:gap-1.5 group cursor-pointer"
                           variants={skillVariants}
                           custom={skillIndex}
                         >

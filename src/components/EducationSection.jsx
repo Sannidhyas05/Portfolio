@@ -1,5 +1,5 @@
-import { GraduationCap, School, Calendar } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import { Calendar, GraduationCap, School } from 'lucide-react';
 
 export const EducationSection = () => {
   return (
@@ -35,8 +35,8 @@ export const EducationSection = () => {
             viewport={{ once: true }}
             // Different animation for desktop
             style={{
-              "--desktop-x": "-50px",
-              "--desktop-y": "0px",
+              '--desktop-x': '-50px',
+              '--desktop-y': '0px',
             }}
           >
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
@@ -55,7 +55,7 @@ export const EducationSection = () => {
                   <span className="text-sm sm:text-base">2022 - 2026</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  CGPA: 8.59
+                  CGPA: 8.79
                 </p>
               </div>
             </div>

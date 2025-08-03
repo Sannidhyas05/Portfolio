@@ -1,213 +1,261 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 const skillsData = {
   Languages: [
     {
-      name: "Python",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      name: 'Python',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     },
     {
-      name: "JavaScript",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      name: 'JavaScript',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
     },
     {
-      name: "TypeScript",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      name: 'TypeScript',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
     },
     {
-      name: "Java",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      name: 'Java',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
     },
     {
-      name: "C",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+      name: 'C++',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
     },
     {
-      name: "C++",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+      name: 'C',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
     },
     {
-      name: "HTML",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      name: 'HTML',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
     },
     {
-      name: "CSS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      name: 'CSS',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
     },
   ],
   Frontend: [
     {
-      name: "React",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      name: 'React',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     },
     {
-      name: "Next.js",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      name: 'Next.js',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
     },
     {
-      name: "Redux",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+      name: 'Redux',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg',
     },
     {
-      name: "Context API",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      name: 'Context API',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     },
     {
-      name: "React Router",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      name: 'React Router',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg',
     },
     {
-      name: "React Query",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      name: 'React Query',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactquery/reactquery-original.svg',
     },
     {
-      name: "React Hooks",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      name: 'React Hooks',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     },
     {
-      name: "React Hook Form",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      name: 'React Hook Form',
+      logo: 'https://raw.githubusercontent.com/react-hook-form/react-hook-form/master/docs/logo.png',
     },
   ],
   Styling: [
     {
-      name: "CSS Modules",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      name: 'Tailwind CSS',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
     },
     {
-      name: "Tailwind CSS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+      name: 'CSS Modules',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
     },
     {
-      name: "Styled Components",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/styledcomponents/styledcomponents-original.svg",
+      name: 'Styled Components',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/styledcomponents/styledcomponents-original.svg',
     },
     {
-      name: "Framer Motion",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg",
+      name: 'Framer Motion',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg',
     },
   ],
   Backend: [
     {
-      name: "Node.js",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      name: 'Node.js',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
     },
     {
-      name: "Express.js",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      name: 'Express.js',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
     },
     {
-      name: "Pug",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pug/pug-original.svg",
+      name: 'Django',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
     },
     {
-      name: "Mongoose",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg",
+      name: 'Pug',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pug/pug-original.svg',
     },
     {
-      name: "REST API",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+      name: 'Mongoose',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg',
+    },
+    {
+      name: 'REST API',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
     },
   ],
-  "ML/Data Science": [
+  'ML/Data Science': [
     {
-      name: "TensorFlow",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+      name: 'TensorFlow',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
     },
     {
-      name: "Keras",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg",
+      name: 'Keras',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg',
     },
     {
-      name: "OpenCV",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg",
+      name: 'OpenCV',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg',
     },
     {
-      name: "PyTorch",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+      name: 'PyTorch',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg',
     },
     {
-      name: "Scikit-Learn",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg",
+      name: 'Scikit-Learn',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg',
     },
     {
-      name: "NumPy",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
+      name: 'NumPy',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg',
     },
     {
-      name: "Pandas",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
+      name: 'Pandas',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg',
     },
     {
-      name: "Matplotlib",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg",
+      name: 'Matplotlib',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg',
     },
     {
-      name: "SciPy",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scipy/scipy-original.svg",
+      name: 'Plotly',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/plotly/plotly-original.svg',
+    },
+    {
+      name: 'SciPy',
+      logo: 'https://scipy.org/images/logo.svg',
     },
   ],
   Database: [
     {
-      name: "MongoDB",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      name: 'PostgreSQL',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
     },
     {
-      name: "MySQL",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      name: 'MySQL',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
     },
     {
-      name: "Supabase",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+      name: 'MongoDB',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+    },
+    {
+      name: 'SQLite',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg',
+    },
+    {
+      name: 'Supabase',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
     },
   ],
-  "Tools & IDEs": [
+  'Tools & IDEs': [
     {
-      name: "Visual Studio Code",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+      name: 'Git',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     },
     {
-      name: "IntelliJ IDEA",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg",
+      name: 'GitHub',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     },
     {
-      name: "Postman",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+      name: 'Docker',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
     },
     {
-      name: "Jupyter Notebook",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
+      name: 'AWS',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
     },
     {
-      name: "Git",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      name: 'EC2',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+    },
+    {
+      name: 'Nginx',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg',
+    },
+    {
+      name: 'Vite',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+    },
+    {
+      name: 'Visual Studio Code',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
+    },
+    {
+      name: 'IntelliJ IDEA',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg',
+    },
+    {
+      name: 'Postman',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
+    },
+    {
+      name: 'Jupyter Notebook',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg',
     },
   ],
   Concepts: [
     {
-      name: "Data Structures & Algorithms",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+      name: 'Data Structures & Algorithms',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
     },
     {
-      name: "System Design",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg",
+      name: 'System Design',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg',
     },
     {
-      name: "DBMS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      name: 'DBMS',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
     },
     {
-      name: "OOPs",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      name: 'OOPs',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
     },
     {
-      name: "Computer Networks",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg",
+      name: 'Computer Networks',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg',
     },
     {
-      name: "Operating Systems",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+      name: 'Operating Systems',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
+    },
+    {
+      name: 'Machine Learning',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
+    },
+    {
+      name: 'Computer Vision',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg',
     },
   ],
 };
@@ -229,7 +277,7 @@ const Tab = ({ children, setPosition, isActive, onClick }) => {
       }}
       onClick={onClick}
       className={`relative z-10 block cursor-pointer px-2 py-1.5 text-xs font-medium transition-colors duration-200 sm:px-3 sm:py-2 md:px-4 md:py-3 md:text-sm ${
-        isActive ? "text-white" : "text-foreground hover:text-foreground/80"
+        isActive ? 'text-white' : 'text-foreground hover:text-foreground/80'
       }`}
     >
       {children}
@@ -244,7 +292,7 @@ const Cursor = ({ position }) => {
         ...position,
       }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 30,
       }}
@@ -314,7 +362,7 @@ const SlideTabs = ({ tabs, activeTab, setActiveTab }) => {
 };
 
 export const SkillsSection = () => {
-  const [activeTab, setActiveTab] = useState("Languages");
+  const [activeTab, setActiveTab] = useState('Languages');
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const tabs = Object.keys(skillsData);
 
@@ -329,7 +377,7 @@ export const SkillsSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
@@ -342,7 +390,7 @@ export const SkillsSection = () => {
       opacity: 1,
       transition: {
         duration: 0.4,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
@@ -398,7 +446,7 @@ export const SkillsSection = () => {
         await Promise.all(imagePromises);
         setImagesLoaded(true);
       } catch (error) {
-        console.warn("Some images failed to preload:", error);
+        console.warn('Some images failed to preload:', error);
         setImagesLoaded(true); // Still set to true to show the component
       }
     };
@@ -417,7 +465,7 @@ export const SkillsSection = () => {
           variants={headerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-2 py-2"
@@ -498,7 +546,7 @@ export const SkillsSection = () => {
                         src={skill.logo}
                         loading="eager"
                         onError={(e) => {
-                          e.currentTarget.style.display = "none";
+                          e.currentTarget.style.display = 'none';
                         }}
                         whileHover={{
                           scale: 1.2,
