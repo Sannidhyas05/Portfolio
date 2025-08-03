@@ -8,7 +8,7 @@ export const ExperienceSection = () => {
       type: 'On-site',
       location: 'Gurugram, Haryana',
       duration: 'June 2025 - July 2025 • 2 mos',
-      logo: '/public/transvolt.png',
+      logo: '/transvolt.png',
       description: [
         'Developed interactive dashboards using Django to visualize and interpret vehicle-sensor data, enabling early detection of battery health degradation patterns.',
         'Launched the Bugzilla-based Issue Tracker with a clean, user-friendly UI, role-based access controls, and SMTP email integration—improving reporting efficiency and reducing triage time.',
