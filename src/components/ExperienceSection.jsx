@@ -1,7 +1,41 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export const ExperienceSection = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      if (typeof document !== 'undefined') {
+        setIsDarkMode(document.documentElement.classList.contains('dark'));
+      }
+    };
+
+    checkDarkMode();
+
+    const observer = new MutationObserver(checkDarkMode);
+
+    if (typeof document !== 'undefined') {
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const experiences = [
+    {
+      title: 'SRE Intern',
+      company: 'CRED',
+      type: 'On-site',
+      location: 'Bengaluru, Karnataka',
+      duration: 'August 2025 - Present',
+      logo: '/cred.png',
+      description: ['At CRED I worked on...'],
+      skills: ['Docker', 'Linux'],
+    },
     {
       title: 'Data Science Intern',
       company: 'Transvolt Mobility',
@@ -10,8 +44,9 @@ export const ExperienceSection = () => {
       duration: 'June 2025 - July 2025 • 2 mos',
       logo: '/transvolt.png',
       description: [
-        'Developed interactive dashboards using Django to visualize and interpret vehicle-sensor data, enabling early detection of battery health degradation patterns.',
         'Launched the Bugzilla-based Issue Tracker with a clean, user-friendly UI, role-based access controls, and SMTP email integration—improving reporting efficiency and reducing triage time.',
+        'Developed interactive dashboards using Django to visualize and interpret vehicle-sensor data, enabling early detection of battery health degradation patterns.',
+        'Deployed applications on AWS EC2 using Docker, Gunicorn, and Nginx, ensuring scalable and production-ready performance.',
       ],
       skills: [
         'Django',
@@ -21,6 +56,7 @@ export const ExperienceSection = () => {
         'Docker',
         'AWS',
         'Nginx',
+        'Linux',
       ],
     },
   ];
@@ -188,6 +224,14 @@ export const ExperienceSection = () => {
                     src={exp.logo}
                     alt={`${exp.company} logo`}
                     className="w-6 h-6 object-contain"
+                    style={
+                      exp.company === 'CRED'
+                        ? {
+                            filter: isDarkMode ? 'invert(1)' : 'none',
+                            transition: 'filter 0.3s ease',
+                          }
+                        : {}
+                    }
                   />
                 </motion.div>
 
