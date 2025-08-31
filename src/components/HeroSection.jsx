@@ -58,7 +58,7 @@ export const HeroSection = () => {
             <div className="space-y-3 lg:space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-primary bg-clip-text opacity-0 animate-fade-in-delay-1">
-                  Sannidhya Sharma 05
+                  Sannidhya Sharma
                 </span>
               </h1>
 

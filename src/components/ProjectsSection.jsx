@@ -1,30 +1,33 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github } from "lucide-react";
 import { useEffect, useState } from "react";
+import music from "@/assets/projects/music.png";
+import campus from "@/assets/projects/campuscatalyst.png";
 
 const projects = [
   {
     id: 1,
-    title: "Simplified Music Streaming Web Application",
-    description:
-      "Engineered backend logic in Java, leveraging queues and stacks to optimize playlist management and ensure smooth music playback. Migrated metadata from Excel to SQL database, enabling scalable storage and improving query performance for real-time song retrieval. Integrated backend APIs with the frontend to deliver features like dynamic search, favorites, and shuffle play, ensuring seamless user experience.",
-    image: "/projects/music.png",
-    tags: ["Java", "SQL", "Backend", "API Integration", "Data Structures"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/Sannidhyas05/Music-Web-Application",
-    demoStatus: "offline",
-  },
-  {
-    id: 2,
     title: "ProjectCampus Catalyst-Project Team Builder",
     description:
       "Developing a LinkedIn/Instagram-inspired collaboration platform for university students to post ideas, showcase achievements, and form project teams. Implementing faculty-student mapping features for streamlined mentor assignment, aligned with academic and class coordinators. Architecting scalable backend workflows and interactive UI to support real-time social interactions across mobile and web.",
-    image: "/projects/campuscatalyst.png",
+    image: campus,
     tags: ["React Native", "JavaScript", "SQL", "Mobile App", "UI/UX"],
     demoUrl: "#",
     githubUrl: "https://github.com/Sannidhyas05/Campus_Catalyst",
     demoStatus: "offline",
   },
+  {
+    id: 2,
+    title: "Simplified Music Streaming Web Application",
+    description:
+      "Engineered backend logic in Java, leveraging queues and stacks to optimize playlist management and ensure smooth music playback. Migrated metadata from Excel to SQL database, enabling scalable storage and improving query performance for real-time song retrieval. Integrated backend APIs with the frontend to deliver features like dynamic search, favorites, and shuffle play, ensuring seamless user experience.",
+    image: music,
+    tags: ["Java", "SQL", "Backend", "API Integration", "Data Structures"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Sannidhyas05/Music-Web-Application",
+    demoStatus: "offline",
+  },
+
   // {
   //   id: 3,
   //   title: 'PomodoLock',

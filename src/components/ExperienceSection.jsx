@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import raasa from "@/assets/Raasa.png";
+import aumbram from "@/assets/aumbram.png";
 
 export const ExperienceSection = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -32,7 +34,7 @@ export const ExperienceSection = () => {
       type: "Remote",
       location: "Noida, Uttar Pradesh",
       duration: "June 2025 - July 2025",
-      logo: "/Raasa.png",
+      logo: raasa,
       description: [
         "Developed and deployed production-ready features in Java (Android Studio), boosting user retention by 12% across two live app releases",
         "Optimized app stability by fixing critical bugs, refactoring legacy code, and ensuring 100% SDK compliance for cross-version performance.",
@@ -53,7 +55,7 @@ export const ExperienceSection = () => {
       type: "Remote",
       location: "Noida, Uttar Pradesh",
       duration: "Jan 2025 – Mar 2025",
-      logo: "/aumbram.png",
+      logo: aumbram,
       description: [
         "Independently built the MVP of a startup product using React Native, Expo, and JavaScript, delivering a fully functional cross-platform application.",
         "Designed and implemented core features and UI/UX workflows, ensuring seamless performance on Android devices.",
