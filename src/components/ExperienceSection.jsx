@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export const ExperienceSection = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const checkDarkMode = () => {
-      if (typeof document !== 'undefined') {
-        setIsDarkMode(document.documentElement.classList.contains('dark'));
+      if (typeof document !== "undefined") {
+        setIsDarkMode(document.documentElement.classList.contains("dark"));
       }
     };
 
@@ -15,10 +15,10 @@ export const ExperienceSection = () => {
 
     const observer = new MutationObserver(checkDarkMode);
 
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
       observer.observe(document.documentElement, {
         attributes: true,
-        attributeFilter: ['class'],
+        attributeFilter: ["class"],
       });
     }
 
@@ -27,36 +27,46 @@ export const ExperienceSection = () => {
 
   const experiences = [
     {
-      title: 'SRE Intern',
-      company: 'CRED',
-      type: 'On-site',
-      location: 'Bengaluru, Karnataka',
-      duration: 'August 2025 - Present',
-      logo: '/cred.png',
-      description: ['At CRED I worked on...'],
-      skills: ['Docker', 'Linux'],
-    },
-    {
-      title: 'Data Science Intern',
-      company: 'Transvolt Mobility',
-      type: 'On-site',
-      location: 'Gurugram, Haryana',
-      duration: 'June 2025 - July 2025 • 2 mos',
-      logo: '/transvolt.png',
+      title: "Frontend Intern",
+      company: "Raasa Karts",
+      type: "Remote",
+      location: "Noida, Uttar Pradesh",
+      duration: "June 2025 - July 2025",
+      logo: "/Raasa.png",
       description: [
-        'Launched the Bugzilla-based Issue Tracker with a clean, user-friendly UI, role-based access controls, and SMTP email integration—improving reporting efficiency and reducing triage time.',
-        'Developed interactive dashboards using Django to visualize and interpret vehicle-sensor data, enabling early detection of battery health degradation patterns.',
-        'Deployed applications on AWS EC2 using Docker, Gunicorn, and Nginx, ensuring scalable and production-ready performance.',
+        "Developed and deployed production-ready features in Java (Android Studio), boosting user retention by 12% across two live app releases",
+        "Optimized app stability by fixing critical bugs, refactoring legacy code, and ensuring 100% SDK compliance for cross-version performance.",
       ],
       skills: [
-        'Django',
-        'PostgreSQL',
-        'Python',
-        'Tailwind CSS',
-        'Docker',
-        'AWS',
-        'Nginx',
-        'Linux',
+        "React",
+        "JavaScript",
+        "Redux",
+        "UI/UX Design",
+        "Debugging",
+        "Data Handling",
+        "Scrollable Lists",
+      ],
+    },
+    {
+      title: "Software Developer Intern",
+      company: "Aumbram",
+      type: "Remote",
+      location: "Noida, Uttar Pradesh",
+      duration: "Jan 2025 – Mar 2025",
+      logo: "/aumbram.png",
+      description: [
+        "Independently built the MVP of a startup product using React Native, Expo, and JavaScript, delivering a fully functional cross-platform application.",
+        "Designed and implemented core features and UI/UX workflows, ensuring seamless performance on Android devices.",
+        "Collaborated with backend APIs to fetch and display dynamic data such as posts, projects, and team information in the mobile app.",
+      ],
+      skills: [
+        "React Native",
+        "Expo",
+        "JavaScript",
+        "UI/UX Design",
+        "Frontend Development",
+        "State Management",
+        "Debugging",
       ],
     },
   ];
@@ -83,7 +93,7 @@ export const ExperienceSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -97,7 +107,7 @@ export const ExperienceSection = () => {
       scaleY: 1,
       transition: {
         duration: 1.2,
-        ease: 'easeOut',
+        ease: "easeOut",
         delay: 0.5,
       },
     },
@@ -115,7 +125,7 @@ export const ExperienceSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -130,7 +140,7 @@ export const ExperienceSection = () => {
       opacity: 1,
       transition: {
         duration: 0.4,
-        ease: 'backOut',
+        ease: "backOut",
         delay: 0.3,
       },
     },
@@ -148,7 +158,7 @@ export const ExperienceSection = () => {
       y: 0,
       transition: {
         duration: 0.3,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -170,7 +180,7 @@ export const ExperienceSection = () => {
           variants={headerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-2 py-2"
@@ -199,7 +209,7 @@ export const ExperienceSection = () => {
             variants={timelineVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-200px' }}
+            viewport={{ once: true, margin: "-200px" }}
           />
 
           <motion.div
@@ -207,7 +217,7 @@ export const ExperienceSection = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: "-100px" }}
           >
             {experiences.map((exp, index) => (
               <motion.div
@@ -225,10 +235,10 @@ export const ExperienceSection = () => {
                     alt={`${exp.company} logo`}
                     className="w-6 h-6 object-contain"
                     style={
-                      exp.company === 'CRED'
+                      exp.company === "CRED"
                         ? {
-                            filter: isDarkMode ? 'invert(1)' : 'none',
-                            transition: 'filter 0.3s ease',
+                            filter: isDarkMode ? "invert(1)" : "none",
+                            transition: "filter 0.3s ease",
                           }
                         : {}
                     }
@@ -305,7 +315,7 @@ export const ExperienceSection = () => {
                     </motion.div>
 
                     <motion.div
-                      className="flex flex-wrap gap-1.5"
+                      className="flex flex-wrap gap-1.5 "
                       variants={skillContainerVariants}
                       initial="hidden"
                       whileInView="visible"

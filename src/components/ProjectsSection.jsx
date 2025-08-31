@@ -1,128 +1,121 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Github } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Github } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const projects = [
   {
     id: 1,
-    title: 'Snap-n-Solve',
+    title: "Simplified Music Streaming Web Application",
     description:
-      'A real-time Sudoku puzzle solver that uses computer vision and machine learning to detect, solve, and overlay solutions on Sudoku puzzles captured through your webcam',
-    image: '/projects/snap-n-solve.jpeg',
-    tags: ['Python', 'OpenCV', 'TensorFlow', 'NumPy', 'Keras'],
-    demoUrl: '#',
-    githubUrl: 'https://github.com/shubhs27/Snap-n-Solve',
-    demoStatus: 'offline',
+      "Engineered backend logic in Java, leveraging queues and stacks to optimize playlist management and ensure smooth music playback. Migrated metadata from Excel to SQL database, enabling scalable storage and improving query performance for real-time song retrieval. Integrated backend APIs with the frontend to deliver features like dynamic search, favorites, and shuffle play, ensuring seamless user experience.",
+    image: "/projects/music.png",
+    tags: ["Java", "SQL", "Backend", "API Integration", "Data Structures"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Sannidhyas05/Music-Web-Application",
+    demoStatus: "offline",
   },
   {
     id: 2,
-    title: 'The Wild Oasis',
+    title: "ProjectCampus Catalyst-Project Team Builder",
     description:
-      'An internal hotel management application designed for hotel employees to efficiently manage bookings, cabins, guests, and more',
-    image: '/projects/wildOasis.png',
-    tags: [
-      'React',
-      'Styled-Components',
-      'React-Query',
-      'React-Hook-Form',
-      'Recharts',
-      'Supabase',
-    ],
-    demoUrl: 'https://the-wild-oasis-shubhanan.vercel.app/',
-    githubUrl: 'https://github.com/shubhs27/The-wild-oasis',
-    demoStatus: 'online',
+      "Developing a LinkedIn/Instagram-inspired collaboration platform for university students to post ideas, showcase achievements, and form project teams. Implementing faculty-student mapping features for streamlined mentor assignment, aligned with academic and class coordinators. Architecting scalable backend workflows and interactive UI to support real-time social interactions across mobile and web.",
+    image: "/projects/campuscatalyst.png",
+    tags: ["React Native", "JavaScript", "SQL", "Mobile App", "UI/UX"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Sannidhyas05/Campus_Catalyst",
+    demoStatus: "offline",
   },
-  {
-    id: 3,
-    title: 'PomodoLock',
-    description:
-      'A powerful Chrome extension that combines the Pomodoro technique with website blocking functionality to boost your productivity',
-    image: '/projects/pomodoLock.png',
-    tags: ['JavaScript', 'Chrome Extension'],
-    demoUrl:
-      'https://chrome.google.com/webstore/detail/mapddbpaaaachoidpbolhpckhillhbpj',
-    githubUrl: 'https://github.com/shubhs27/PomodoLock',
-    demoStatus: 'online',
-  },
-  {
-    id: 4,
-    title: 'Natours',
-    description:
-      'A dynamic tour booking platform which delivers a seamless travel planning experience with secure authentication, advanced tour filtering, interactive maps, and streamlined booking processes',
-    image: '/projects/natours.png',
-    tags: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST-API', 'Pug'],
-    demoUrl: 'https://natours-shubhanan.onrender.com',
-    githubUrl: 'https://github.com/shubhs27/Natours',
-    demoStatus: 'online',
-  },
-  {
-    id: 5,
-    title: 'The Wild Oasis (Website)',
-    description:
-      'A luxurious cabin booking platform for a resort located in the heart of the Italian Dolomites',
-    image: '/projects/wildOasisWebsite.png',
-    tags: ['Next.js', 'Tailwind CSS', 'Supabase', 'NextAuth-Google'],
-    demoUrl: 'https://the-wild-oasis-website-shubhanan.vercel.app/',
-    githubUrl: 'https://github.com/shubhs27/The-wild-oasis-website',
-    demoStatus: 'online',
-  },
-  {
-    id: 6,
-    title: 'NoMoRecs',
-    description:
-      "A lightweight Chrome extension designed to help users focus on their chosen content by blocking YouTube's recommendation algorithm",
-    image: '/projects/noMoRecs.png',
-    tags: ['JavaScript', 'Chrome Extension'],
-    demoUrl:
-      'https://chrome.google.com/webstore/detail/nppghgjojmhangjjbnlmdlahncpoddbi',
-    githubUrl: 'https://github.com/shubhs27/NoMoRecs',
-    demoStatus: 'online',
-  },
-  {
-    id: 7,
-    title: 'Use-Popcorn',
-    description:
-      'A React application for searching movies and tracking your personal watchlist with ratings',
-    image: '/projects/usePopcorn.png',
-    tags: ['React'],
-    demoUrl: 'https://use-popcorn-shubhanan.netlify.app/',
-    githubUrl: 'https://github.com/shubhs27/Use-Popcorn',
-    demoStatus: 'online',
-  },
-  {
-    id: 8,
-    title: 'Fast React Pizza',
-    description:
-      'A fully functional pizza ordering application that allows users to browse the menu, add items to cart, place orders, and track their order status',
-    image: '/projects/fastPizza.png',
-    tags: ['React', 'Redux', 'React-Router', 'Tailwind CSS'],
-    demoUrl: 'https://fast-react-pizza-shubhanan.netlify.app/',
-    githubUrl: 'https://github.com/shubhs27/Fast-react-pizza',
-    demoStatus: 'online',
-  },
-  {
-    id: 9,
-    title: 'PureView',
-    description:
-      'A lightweight Chrome extension designed to give users a cleaner and distraction-free web browsing experience by blocking intrusive ads',
-    image: '/projects/pureView.png',
-    tags: ['JavaScript', 'Chrome Extension'],
-    demoUrl:
-      'https://chrome.google.com/webstore/detail/dnndbeelpmgipmibcbocajpimolmoica',
-    githubUrl: 'https://github.com/shubhs27/PureView',
-    demoStatus: 'online',
-  },
-  {
-    id: 10,
-    title: 'Stock Analyzer',
-    description:
-      'A Django-based web application for visualizing stock market data with interactive candlestick charts and volume analysis',
-    image: '/projects/stocks.png',
-    tags: ['Django', 'Python', 'Plotly', 'PostgreSQL'],
-    demoUrl: '#',
-    githubUrl: 'https://github.com/shubhs27/Stock-Analyzer',
-    demoStatus: 'offline',
-  },
+  // {
+  //   id: 3,
+  //   title: 'PomodoLock',
+  //   description:
+  //     'A powerful Chrome extension that combines the Pomodoro technique with website blocking functionality to boost your productivity',
+  //   image: '/projects/pomodoLock.png',
+  //   tags: ['JavaScript', 'Chrome Extension'],
+  //   demoUrl:
+  //     'https://chrome.google.com/webstore/detail/mapddbpaaaachoidpbolhpckhillhbpj',
+  //   githubUrl: 'https://github.com/shubhs27/PomodoLock',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Natours',
+  //   description:
+  //     'A dynamic tour booking platform which delivers a seamless travel planning experience with secure authentication, advanced tour filtering, interactive maps, and streamlined booking processes',
+  //   image: '/projects/natours.png',
+  //   tags: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST-API', 'Pug'],
+  //   demoUrl: 'https://natours-shubhanan.onrender.com',
+  //   githubUrl: 'https://github.com/shubhs27/Natours',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 5,
+  //   title: 'The Wild Oasis (Website)',
+  //   description:
+  //     'A luxurious cabin booking platform for a resort located in the heart of the Italian Dolomites',
+  //   image: '/projects/wildOasisWebsite.png',
+  //   tags: ['Next.js', 'Tailwind CSS', 'Supabase', 'NextAuth-Google'],
+  //   demoUrl: 'https://the-wild-oasis-website-shubhanan.vercel.app/',
+  //   githubUrl: 'https://github.com/shubhs27/The-wild-oasis-website',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 6,
+  //   title: 'NoMoRecs',
+  //   description:
+  //     "A lightweight Chrome extension designed to help users focus on their chosen content by blocking YouTube's recommendation algorithm",
+  //   image: '/projects/noMoRecs.png',
+  //   tags: ['JavaScript', 'Chrome Extension'],
+  //   demoUrl:
+  //     'https://chrome.google.com/webstore/detail/nppghgjojmhangjjbnlmdlahncpoddbi',
+  //   githubUrl: 'https://github.com/shubhs27/NoMoRecs',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 7,
+  //   title: 'Use-Popcorn',
+  //   description:
+  //     'A React application for searching movies and tracking your personal watchlist with ratings',
+  //   image: '/projects/usePopcorn.png',
+  //   tags: ['React'],
+  //   demoUrl: 'https://use-popcorn-shubhanan.netlify.app/',
+  //   githubUrl: 'https://github.com/shubhs27/Use-Popcorn',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 8,
+  //   title: 'Fast React Pizza',
+  //   description:
+  //     'A fully functional pizza ordering application that allows users to browse the menu, add items to cart, place orders, and track their order status',
+  //   image: '/projects/fastPizza.png',
+  //   tags: ['React', 'Redux', 'React-Router', 'Tailwind CSS'],
+  //   demoUrl: 'https://fast-react-pizza-shubhanan.netlify.app/',
+  //   githubUrl: 'https://github.com/shubhs27/Fast-react-pizza',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 9,
+  //   title: 'PureView',
+  //   description:
+  //     'A lightweight Chrome extension designed to give users a cleaner and distraction-free web browsing experience by blocking intrusive ads',
+  //   image: '/projects/pureView.png',
+  //   tags: ['JavaScript', 'Chrome Extension'],
+  //   demoUrl:
+  //     'https://chrome.google.com/webstore/detail/dnndbeelpmgipmibcbocajpimolmoica',
+  //   githubUrl: 'https://github.com/shubhs27/PureView',
+  //   demoStatus: 'online',
+  // },
+  // {
+  //   id: 10,
+  //   title: 'Stock Analyzer',
+  //   description:
+  //     'A Django-based web application for visualizing stock market data with interactive candlestick charts and volume analysis',
+  //   image: '/projects/stocks.png',
+  //   tags: ['Django', 'Python', 'Plotly', 'PostgreSQL'],
+  //   demoUrl: '#',
+  //   githubUrl: 'https://github.com/shubhs27/Stock-Analyzer',
+  //   demoStatus: 'offline',
+  // },
 ];
 
 const ProjectCard = ({ project, index }) => (
@@ -182,7 +175,7 @@ const ProjectCard = ({ project, index }) => (
             transition={{
               duration: 0.3,
               delay: index * 0.1 + 0.6 + tagIndex * 0.05,
-              ease: 'easeOut',
+              ease: "easeOut",
             }}
             whileHover={{
               scale: 1.05,
@@ -205,7 +198,7 @@ const ProjectCard = ({ project, index }) => (
           href={project.demoUrl}
           whileHover={{
             scale: 1.05,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
             transition: { duration: 0.2 },
           }}
           whileTap={{ scale: 0.95 }}
@@ -216,7 +209,7 @@ const ProjectCard = ({ project, index }) => (
             animate={{ scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.1 + 0.8 }}
             className={`w-2 h-2 rounded-full ${
-              project.demoStatus === 'online' ? 'bg-green-500' : 'bg-red-500'
+              project.demoStatus === "online" ? "bg-green-500" : "bg-red-500"
             }`}
           />
           Demo
@@ -225,7 +218,7 @@ const ProjectCard = ({ project, index }) => (
           href={project.githubUrl}
           whileHover={{
             scale: 1.05,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
             transition: { duration: 0.2 },
           }}
           whileTap={{ scale: 0.95 }}
@@ -277,7 +270,7 @@ const Carousel = ({ currentIndex, setCurrentIndex, direction }) => {
           animate="center"
           exit="exit"
           transition={{
-            x: { type: 'spring', stiffness: 100, damping: 30 },
+            x: { type: "spring", stiffness: 100, damping: 30 },
             opacity: { duration: 0.6 },
           }}
           className="absolute inset-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-2 sm:px-0"
@@ -312,8 +305,8 @@ export const ProjectsSection = () => {
     };
 
     updateCardsPerPage();
-    window.addEventListener('resize', updateCardsPerPage);
-    return () => window.removeEventListener('resize', updateCardsPerPage);
+    window.addEventListener("resize", updateCardsPerPage);
+    return () => window.removeEventListener("resize", updateCardsPerPage);
   }, []);
 
   const totalPages = Math.ceil(projects.length / cardsPerPage);
@@ -341,7 +334,7 @@ export const ProjectsSection = () => {
       className="py-16 sm:py-20 lg:py-24 px-4 relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8 }}
     >
       <div className="container mx-auto max-w-6xl">
@@ -403,7 +396,7 @@ export const ProjectsSection = () => {
               canGoPrevious
                 ? {
                     scale: 1.1,
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                     transition: { duration: 0.2 },
                   }
                 : {}
@@ -411,8 +404,8 @@ export const ProjectsSection = () => {
             whileTap={canGoPrevious ? { scale: 0.95 } : {}}
             className={`p-2 sm:p-3 rounded-full border transition-all duration-300 ${
               canGoPrevious
-                ? 'border-border hover:border-primary/50 hover:bg-primary/5 cursor-pointer'
-                : 'border-border/50 text-muted-foreground cursor-not-allowed'
+                ? "border-border hover:border-primary/50 hover:bg-primary/5 cursor-pointer"
+                : "border-border/50 text-muted-foreground cursor-not-allowed"
             }`}
           >
             <ArrowLeft size={16} className="sm:w-5 sm:h-5" />
@@ -431,8 +424,8 @@ export const ProjectsSection = () => {
                 transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentPage
-                    ? 'bg-primary'
-                    : 'bg-muted-foreground/30'
+                    ? "bg-primary"
+                    : "bg-muted-foreground/30"
                 }`}
               />
             ))}
@@ -445,7 +438,7 @@ export const ProjectsSection = () => {
               canGoNext
                 ? {
                     scale: 1.1,
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                     transition: { duration: 0.2 },
                   }
                 : {}
@@ -453,8 +446,8 @@ export const ProjectsSection = () => {
             whileTap={canGoNext ? { scale: 0.95 } : {}}
             className={`p-2 sm:p-3 rounded-full border transition-all duration-300 ${
               canGoNext
-                ? 'border-border hover:border-primary/50 hover:bg-primary/5 cursor-pointer'
-                : 'border-border/50 text-muted-foreground cursor-not-allowed'
+                ? "border-border hover:border-primary/50 hover:bg-primary/5 cursor-pointer"
+                : "border-border/50 text-muted-foreground cursor-not-allowed"
             }`}
           >
             <ArrowRight size={16} className="sm:w-5 sm:h-5" />

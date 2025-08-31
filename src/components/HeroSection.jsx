@@ -12,8 +12,10 @@ export const HeroSection = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
   const titles = [
     "Full Stack Developer",
-    "Passionate about AI/ML",
-    "Tech Enthusiast",
+    "Founder of Campus Catalyst",
+    "Tech Enthusiast & Innovator",
+    "Chess Player & Strategic Thinker",
+    "Content Creator",
     "Problem Solver",
   ];
 
@@ -43,8 +45,8 @@ export const HeroSection = () => {
           <div className="flex justify-center lg:justify-end lg:order-2 opacity-0 animate-fade-in-delay-3">
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl">
               <img
-                src="/shubhanan.jpg"
-                alt="Shubhanan Sharma"
+                src="/Sannidhya.jpg"
+                alt="Sannidhya Sharma"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -55,7 +57,7 @@ export const HeroSection = () => {
             <div className="space-y-3 lg:space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-primary bg-clip-text opacity-0 animate-fade-in-delay-1">
-                  Shubhanan Sharma
+                  Sannidhya Sharma
                 </span>
               </h1>
 
@@ -66,9 +68,10 @@ export const HeroSection = () => {
               </h2>
 
               <p className="text-base lg:text-lg text-foreground/70 max-w-xl leading-relaxed opacity-0 animate-fade-in-delay-3 mx-auto lg:mx-0 px-2 lg:px-0">
-                I'm a developer who loves turning ideas into real, usable
-                products. What started as curiosity grew into a passion for
-                building tools I'd actually use—whether simple or ambitious.
+                I’m a full-stack developer who enjoys turning ideas into usable
+                products. For me, coding is like chess—each decision is a move
+                that shapes the bigger picture. I thrive on strategy,
+                problem-solving, and building tools that make a real difference.
               </p>
             </div>
 
@@ -83,7 +86,7 @@ export const HeroSection = () => {
               </button>
 
               <a
-                href="https://drive.google.com/file/d/1rlKmygPq1swT7B50DO6JE8EihgzyDCTJ/view?usp=sharing"
+                href="https://drive.google.com/file/d/1d9CXL3K41E-WrOqm1PV30nbcT650Nims/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 border border-border text-foreground px-5 lg:px-6 py-2.5 lg:py-3 rounded-lg font-medium hover:bg-card transition-all duration-300 hover:scale-105"
@@ -96,7 +99,7 @@ export const HeroSection = () => {
             {/* Social links */}
             <div className="flex gap-3 lg:gap-4 opacity-0 animate-fade-in-delay-5 justify-center lg:justify-start">
               <a
-                href="https://github.com/shubhs27"
+                href="https://github.com/Sannidhyas05"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 lg:p-3 border border-border rounded-lg text-foreground/70 hover:text-foreground hover:border-primary transition-all duration-300 hover:scale-110"
@@ -104,7 +107,7 @@ export const HeroSection = () => {
                 <Github className="h-4 w-4 lg:h-5 lg:w-5" />
               </a>
               <a
-                href="https://leetcode.com/u/shubhs27/"
+                href="https://leetcode.com/u/sannidhya05/"
                 className="p-2.5 lg:p-3 border border-border rounded-lg text-foreground/70 hover:text-foreground hover:border-primary transition-all duration-300 hover:scale-110"
               >
                 <img
@@ -114,7 +117,7 @@ export const HeroSection = () => {
                 />
               </a>
               <a
-                href="https://www.linkedin.com/in/shubhs27/"
+                href="https://www.linkedin.com/in/sannidhya-sharma-5b2a9522a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 lg:p-3 border border-border rounded-lg text-foreground/70 hover:text-foreground hover:border-primary transition-all duration-300 hover:scale-110"
@@ -122,7 +125,7 @@ export const HeroSection = () => {
                 <Linkedin className="h-4 w-4 lg:h-5 lg:w-5" />
               </a>
               <a
-                href="mailto:shubhanans@gmail.com"
+                href="mailto:sannidhyas947@outlook.com"
                 className="p-2.5 lg:p-3 border border-border rounded-lg text-foreground/70 hover:text-foreground hover:border-primary transition-all duration-300 hover:scale-110"
               >
                 <Mail className="h-4 w-4 lg:h-5 lg:w-5" />

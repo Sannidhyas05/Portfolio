@@ -38,7 +38,7 @@ export const ContactSection = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: "Your Name", // Replace with your name
+          to_name: "Sannidhya Sharma", // Replace with your name
         },
         EMAILJS_PUBLIC_KEY
       );
@@ -217,21 +217,21 @@ export const ContactSection = () => {
             >
               {[
                 {
-                  href: "https://github.com/shubhs27",
+                  href: "https://github.com/Sannidhyas05",
                   icon: Github,
                   label: "GitHub",
                 },
                 {
-                  href: "https://www.linkedin.com/in/shubhs27/",
+                  href: "https://www.linkedin.com/in/sannidhya-sharma-5b2a9522a/",
                   icon: Linkedin,
                   label: "LinkedIn",
                 },
                 {
-                  href: "mailto:shubhanans@gmail.com",
+                  href: "mailto:sannidhyas947@outlook.com",
                   icon: Mail,
                   label: "Email",
                 },
-                { href: "tel: +919717611259", icon: Phone, label: "Phone" },
+                { href: "tel: +919045081130", icon: Phone, label: "Phone" },
               ].map(({ href, icon: Icon, label }, index) => (
                 <motion.a
                   key={label}

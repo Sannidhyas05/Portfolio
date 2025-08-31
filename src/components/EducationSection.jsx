@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { Calendar, GraduationCap, School } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Calendar, GraduationCap, School } from "lucide-react";
 
 export const EducationSection = () => {
   return (
@@ -35,8 +35,8 @@ export const EducationSection = () => {
             viewport={{ once: true }}
             // Different animation for desktop
             style={{
-              '--desktop-x': '-50px',
-              '--desktop-y': '0px',
+              "--desktop-x": "-50px",
+              "--desktop-y": "0px",
             }}
           >
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
@@ -55,7 +55,7 @@ export const EducationSection = () => {
                   <span className="text-sm sm:text-base">2022 - 2026</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  CGPA: 8.79
+                  CGPA: 7.53
                 </p>
               </div>
             </div>
@@ -78,14 +78,14 @@ export const EducationSection = () => {
                   CBSE - Class XII
                 </h3>
                 <p className="text-primary font-medium mb-2 text-sm sm:text-base">
-                  Modern School, Barakhamba Road - New Delhi
+                  Delhi Public School, Gautam Buddha Nagar - Noida sector-132
                 </p>
                 <div className="flex items-center justify-center sm:justify-start gap-2 text-muted-foreground mb-4">
                   <Calendar className="h-4 w-4" />
-                  <span className="text-sm sm:text-base">2014 - 2021</span>
+                  <span className="text-sm sm:text-base">2017 - 2021</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  Grade: 91%
+                  Grade: 89.7%
                 </p>
               </div>
             </div>
