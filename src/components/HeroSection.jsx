@@ -87,7 +87,7 @@ export const HeroSection = () => {
               </button>
 
               <a
-                href="https://drive.google.com/file/d/1d9CXL3K41E-WrOqm1PV30nbcT650Nims/view?usp=drive_link"
+                href="https://drive.google.com/drive/folders/1vxmgjJP-Jk1D-31ynT1EoxVTkTKXSMER?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 border border-border text-foreground px-5 lg:px-6 py-2.5 lg:py-3 rounded-lg font-medium hover:bg-card transition-all duration-300 hover:scale-105"
