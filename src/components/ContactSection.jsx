@@ -231,7 +231,7 @@ export const ContactSection = () => {
                   icon: Mail,
                   label: "Email",
                 },
-                { href: "tel: +919045081130", icon: Phone, label: "Phone" },
+                { href: "tel:+919045081130", icon: Phone, label: "Phone" },
               ].map(({ href, icon: Icon, label }, index) => (
                 <motion.a
                   key={label}

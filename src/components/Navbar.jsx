@@ -30,7 +30,6 @@ export const Navbar = () => {
       setIsDarkMode(false);
       document.documentElement.classList.remove("dark");
     } else {
-      // first visit: no stored key -> default to dark
       localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
@@ -55,7 +54,6 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
 
-      // Check which section is currently in view
       const sections = navItems.map((item) => item.href.substring(1));
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
@@ -70,9 +68,7 @@ export const Navbar = () => {
         const sectionName = navItems.find(
           (item) => item.href === `#${currentSection}`
         )?.name;
-        if (sectionName) {
-          setActiveSection(sectionName);
-        }
+        if (sectionName) setActiveSection(sectionName);
       }
     };
 
@@ -80,24 +76,18 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside or on escape key
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        setIsMenuOpen(false);
-      }
+      if (e.key === "Escape") setIsMenuOpen(false);
     };
 
     const handleOutsideClick = (e) => {
-      if (isMenuOpen && !e.target.closest("nav")) {
-        setIsMenuOpen(false);
-      }
+      if (isMenuOpen && !e.target.closest("nav")) setIsMenuOpen(false);
     };
 
     if (isMenuOpen) {
       document.addEventListener("keydown", handleEscape);
       document.addEventListener("click", handleOutsideClick);
-      // Prevent body scroll when menu is open
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -110,7 +100,6 @@ export const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  // Animation variants
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
     visible: {
@@ -131,11 +120,7 @@ export const Navbar = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 25,
-      },
+      transition: { type: "spring", stiffness: 400, damping: 25 },
     },
   };
 
@@ -144,20 +129,11 @@ export const Navbar = () => {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-        delay: 0.1,
-      },
+      transition: { type: "spring", stiffness: 400, damping: 20, delay: 0.1 },
     },
     hover: {
       scale: 1.05,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
+      transition: { type: "spring", stiffness: 400, damping: 10 },
     },
   };
 
@@ -174,36 +150,27 @@ export const Navbar = () => {
     open: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.3,
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
+      transition: { duration: 0.3, staggerChildren: 0.1, delayChildren: 0.1 },
     },
   };
 
   const mobileItemVariants = {
-    closed: {
-      x: -50,
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
+    closed: { x: -50, opacity: 0, transition: { duration: 0.2 } },
     open: {
       x: 0,
       opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 25,
-      },
+      transition: { type: "spring", stiffness: 300, damping: 25 },
     },
   };
 
-  const hamburgerVariants = {
-    closed: { rotate: 0 },
-    open: { rotate: 180 },
+  const hamburgerVariants = { closed: { rotate: 0 }, open: { rotate: 180 } };
+
+  const handleNavClick = (e, item) => {
+    e.preventDefault();
+    const section = document.querySelector(item.href);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+    setActiveSection(item.name);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -224,6 +191,7 @@ export const Navbar = () => {
           whileHover="hover"
           className="text-lg sm:text-xl font-bold text-primary flex items-center"
           href="#home"
+          onClick={(e) => handleNavClick(e, { name: "Home", href: "#home" })}
         >
           <span className="relative z-10">
             <motion.span
@@ -235,11 +203,7 @@ export const Navbar = () => {
                   "0 0 5px rgba(59, 130, 246, 0.5)",
                 ],
               }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <span className="hidden sm:inline">Sannidhya's</span>
               <span className="sm:hidden">S.</span>
@@ -248,7 +212,7 @@ export const Navbar = () => {
           </span>
         </motion.a>
 
-        {/* desktop nav */}
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-8">
           <motion.div
             className="flex space-x-6 relative"
@@ -264,40 +228,32 @@ export const Navbar = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item)}
                 className={cn(
                   "hover:text-primary transition-colors duration-300 relative py-2",
                   activeSection === item.name
                     ? "text-foreground"
                     : "text-foreground/80"
                 )}
-                onClick={() => setActiveSection(item.name)}
               >
                 {item.name}
                 {activeSection === item.name && (
                   <motion.div
                     className="absolute bottom-1 left-0 right-0 h-0.5 bg-primary"
                     layoutId="underline"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 40,
-                    }}
                   />
                 )}
               </motion.a>
             ))}
           </motion.div>
 
-          {/* Theme toggle component */}
+          {/* Theme toggle */}
           <motion.button
             variants={itemVariants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50"
-            aria-label="Toggle theme"
+            className="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
             <AnimatePresence mode="wait">
               {isDarkMode ? (
@@ -325,16 +281,14 @@ export const Navbar = () => {
           </motion.button>
         </div>
 
-        {/* mobile nav */}
+        {/* Mobile nav */}
         <div className="md:hidden flex items-center space-x-2">
-          {/* Mobile theme toggle */}
           <motion.button
             variants={itemVariants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50"
-            aria-label="Toggle theme"
+            className="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
             <AnimatePresence mode="wait">
               {isDarkMode ? (
@@ -368,7 +322,6 @@ export const Navbar = () => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="p-2 text-foreground z-50 relative focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-full"
-            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             <AnimatePresence mode="wait">
               {isMenuOpen ? (
@@ -396,20 +349,17 @@ export const Navbar = () => {
           </motion.button>
         </div>
 
+        {/* Mobile menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <>
-              {/* Backdrop */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
                 onClick={() => setIsMenuOpen(false)}
-                style={{ top: 0 }}
               />
-
-              {/* Mobile menu */}
               <motion.div
                 variants={mobileMenuVariants}
                 initial="closed"
@@ -417,7 +367,7 @@ export const Navbar = () => {
                 exit="closed"
                 className="fixed left-0 right-0 bottom-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center md:hidden"
                 style={{
-                  top: isScrolled ? "60px" : "80px", // Adjust based on navbar height
+                  top: isScrolled ? "60px" : "80px",
                   minHeight: isScrolled
                     ? "calc(100vh - 60px)"
                     : "calc(100vh - 80px)",
@@ -431,42 +381,18 @@ export const Navbar = () => {
                     <motion.a
                       key={key}
                       variants={mobileItemVariants}
-                      whileHover={{
-                        scale: 1.05,
-                        x: 5,
-                        transition: {
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 10,
-                        },
-                      }}
+                      whileHover={{ scale: 1.05, x: 5 }}
                       whileTap={{ scale: 0.95 }}
                       href={item.href}
+                      onClick={(e) => handleNavClick(e, item)}
                       className={cn(
                         "hover:text-primary transition-colors duration-300 relative py-2 px-4 rounded-lg text-center min-w-[120px]",
                         activeSection === item.name
                           ? "text-foreground bg-primary/10"
                           : "text-foreground/80"
                       )}
-                      onClick={() => {
-                        setIsMenuOpen(false);
-                        setActiveSection(item.name);
-                      }}
                     >
                       {item.name}
-                      {activeSection === item.name && (
-                        <motion.div
-                          className="absolute -left-2 top-1/2 w-1 h-1 bg-primary rounded-full"
-                          layoutId="mobileIndicator"
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 25,
-                          }}
-                        />
-                      )}
                     </motion.a>
                   ))}
                 </motion.div>
