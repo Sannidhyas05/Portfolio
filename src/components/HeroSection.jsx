@@ -7,6 +7,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import profilePic from "@/assests/Sannidhya.jpg";
 
 export const HeroSection = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
@@ -45,7 +46,7 @@ export const HeroSection = () => {
           <div className="flex justify-center lg:justify-end lg:order-2 opacity-0 animate-fade-in-delay-3">
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl">
               <img
-                src="/Sannidhya.jpg"
+                src={profilePic}
                 alt="Sannidhya Sharma"
                 className="w-full h-full object-cover"
               />
