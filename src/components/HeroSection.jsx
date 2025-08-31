@@ -7,7 +7,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import profilePic from "@/assests/Sannidhya.jpg";
+import profilePic from "@/assets/Sannidhya.jpg";
 
 export const HeroSection = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
